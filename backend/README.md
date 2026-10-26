@@ -74,7 +74,7 @@ Alterar o tsconfig.json para:
 
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "es2024,
     "module": "NodeNext", 
     "outDir": "./dist",
     "rootDir": "./src",

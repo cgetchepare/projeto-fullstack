@@ -5,7 +5,7 @@ Criar o arquivo package.
 npm init
 ```
 ```
-npm install express --save      OU
+npm install express --save      
 ```
 Instalar os pacotes para suporte ao TypeScript
 ```

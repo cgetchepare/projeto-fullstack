@@ -1,4 +1,4 @@
-## Sequência pra criar o projeto
+## Sequência para a criação do projeto
 
 Criar o arquivo package.
 ```

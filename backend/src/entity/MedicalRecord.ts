@@ -1,6 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne } from "typeorm";
 import { MedicalAssessment } from "./MedicalAssessment";
 import { ExamRequest } from "./ExamRequest";
+import { Doctor } from "./Doctor";
+import { Patient } from "./Patient";
 
 @Entity("medical-records")
 export class MedicalRecord {
@@ -20,6 +22,13 @@ export class MedicalRecord {
     @ManyToOne(() => MedicalAssessment, (medicalAssessment) => medicalAssessment.medicalRecord)
     @JoinColumn({ name: "medicalAssessmentId" })
     medicalAssessment!: MedicalAssessment;
+
+    @ManyToOne(() => Doctor, (doctor) => doctor.medicalRecords, { onDelete: "CASCADE" })
+    doctor!: Doctor;
+
+    @OneToOne(() => Patient, (patient) => patient.medicalRecord, { onDelete: "CASCADE" })
+    @JoinColumn()
+    patient!: Patient;
 
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     createdAt!: Date;

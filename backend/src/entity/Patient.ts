@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { MedicalRecord } from "./MedicalRecord";
 
 @Entity("patients")
 export class Patient {
@@ -18,5 +19,6 @@ export class Patient {
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
     updatedAt!: Date;
 
-    // Relacionamento OneToMany com a tabela users
+    @OneToOne(() => MedicalRecord, (medicalRecord) => medicalRecord.patient)
+    medicalRecord!: MedicalRecord;
 }

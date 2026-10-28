@@ -17,18 +17,18 @@ export class MedicalRecord {
 
     @ManyToOne(() => ExamRequest, (examRequest) => examRequest.medicalRecord)
     @JoinColumn({ name: "examRequestId" })
-    examRequest!: ExamRequest;
+    examRequest?: ExamRequest | null;
 
     @ManyToOne(() => MedicalAssessment, (medicalAssessment) => medicalAssessment.medicalRecord)
     @JoinColumn({ name: "medicalAssessmentId" })
-    medicalAssessment!: MedicalAssessment;
+    medicalAssessment?: MedicalAssessment | null;
 
     @ManyToOne(() => Doctor, (doctor) => doctor.medicalRecords, { onDelete: "CASCADE" })
-    doctor!: Doctor;
+    doctor?: Doctor | null;
 
     @OneToOne(() => Patient, (patient) => patient.medicalRecord, { onDelete: "CASCADE" })
     @JoinColumn()
-    patient!: Patient;
+    patient?: Patient | null;
 
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     createdAt!: Date;

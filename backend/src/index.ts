@@ -17,6 +17,7 @@ import MedicalAssessmentController from "./controllers/MedicalAssessmentControll
 import ExamRequestController from "./controllers/ExamRequestController";
 import DoctorController from "./controllers/DoctorController";
 import PatientController from "./controllers/PatientController";
+import MedicalRecordController from "./controllers/MedicalRecordController";
 import MedicalAssessment from "./controllers/MedicalAssessmentController"
 
 app.use('/', AuthController);
@@ -24,6 +25,7 @@ app.use('/', MedicalAssessmentController);
 app.use('/', ExamRequestController);
 app.use('/', DoctorController);
 app.use('/', PatientController);
+app.use('/', MedicalRecordController);
 app.use('/', MedicalAssessment);
 
 AppDataSource.initialize()

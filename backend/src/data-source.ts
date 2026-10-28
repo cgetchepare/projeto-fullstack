@@ -17,10 +17,4 @@ export const AppDataSource = new DataSource({
     migrations: [],
 });
 
-AppDataSource.initialize()
-    .then(() => {
-        console.log("Conexão com o banco de dados realizada com sucesso!");
-    })
-    .catch((error) => {
-        console.log("Erro na conexão com o banco de dados:", error);
-    });
+

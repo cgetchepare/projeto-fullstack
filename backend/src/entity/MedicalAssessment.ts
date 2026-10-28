@@ -3,8 +3,8 @@ import { MedicalRecord } from "./MedicalRecord";
 
 @Entity("medical-assessments")
 export class MedicalAssessment {
-    @PrimaryGeneratedColumn()
-    id!: number;
+@PrimaryGeneratedColumn("uuid")
+    id!: string;
 
     @Column()
     name!: string; 

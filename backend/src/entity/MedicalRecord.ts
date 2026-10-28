@@ -4,8 +4,8 @@ import { ExamRequest } from "./ExamRequest";
 
 @Entity("medical-records")
 export class MedicalRecord {
-    @PrimaryGeneratedColumn()
-    id!: number;
+    @PrimaryGeneratedColumn("uuid")
+    id!: string;
 
     @Column()
     name!: string;

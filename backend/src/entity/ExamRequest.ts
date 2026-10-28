@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { MedicalRecord } from "./MedicalRecord"; 
+import { MedicalRecord } from "./MedicalRecord";
 
 @Entity("exam-requesties")
 export class ExamRequest {
-    @PrimaryGeneratedColumn()
-    id!: number;
+    @PrimaryGeneratedColumn("uuid")
+    id!: string;
 
     @Column()
     name!: string;

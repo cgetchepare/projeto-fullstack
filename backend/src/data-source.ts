@@ -1,20 +1,30 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { MedicalRecord } from "./entity/MedicalRecord";
+import { ExamRequest } from "./entity/ExamRequest";
+import { Avaliation } from "./entity/Avaliation";
+
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const dialect = process.env.DB_DIALECT ?? "mysql";
 
 export const AppDataSource = new DataSource({
     type: dialect as "mysql",
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT? parseInt(process.env.DB_PORT) : 3306,
+    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 3306,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     synchronize: false,
     logging: true,
-    entities: [],
+    entities: [MedicalRecord, Avaliation, ExamRequest],
     subscribers: [],
-    migrations: [],
+    migrations: [__dirname + "/migration/*.js"],
 });
+
+
+
 
 

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { MedicalRecord } from "./entity/MedicalRecord";
 import { ExamRequest } from "./entity/ExamRequest";
-import { Avaliation } from "./entity/Avaliation";
+import { MedicalAssessment } from "./entity/MedicalAssessment";
 
 import dotenv from "dotenv";
 
@@ -19,7 +19,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE,
     synchronize: false,
     logging: true,
-    entities: [MedicalRecord, Avaliation, ExamRequest],
+    entities: [MedicalRecord, MedicalAssessment, ExamRequest],
     subscribers: [],
     migrations: [__dirname + "/migration/*.js"],
 });

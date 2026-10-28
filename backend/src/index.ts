@@ -8,12 +8,12 @@ const app = express();
 
 app.use(express.json());
 
-import AuthController from "./controllers/Auth";
-import AvaliationController from "./controllers/AvaliationController";
+import AuthController from "./controllers/AuthController"
+import MedicalAssessmentController from "./controllers/MedicalAssessmentController";
 import ExamRequestController from "./controllers/ExamRequestController";
 
 app.use('/', AuthController);
-app.use('/', AvaliationController);
+app.use('/', MedicalAssessmentController);
 app.use('/', ExamRequestController);
 
 

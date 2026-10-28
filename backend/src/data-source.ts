@@ -5,6 +5,8 @@ import { ExamRequest } from "./entity/ExamRequest";
 import { MedicalAssessment } from "./entity/MedicalAssessment";
 
 import dotenv from "dotenv";
+import { Patient } from "./entity/Patient";
+import { Doctor } from "./entity/Doctor";
 
 dotenv.config();
 
@@ -19,7 +21,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE,
     synchronize: false,
     logging: true,
-    entities: [MedicalRecord, MedicalAssessment, ExamRequest],
+    entities: [MedicalRecord, MedicalAssessment, ExamRequest, Doctor, Patient],
     subscribers: [],
     migrations: [__dirname + "/migration/*.js"],
 });

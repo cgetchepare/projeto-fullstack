@@ -22,5 +22,5 @@ export class Doctor {
     updatedAt!: Date;
 
     @OneToMany(()=> MedicalRecord, (medicalRecord)=> medicalRecord.doctor)
-    medicalRecords!:MedicalRecord[]// Relacionamento OneToMany com a tabela users
+    medicalRecords!:MedicalRecord[]
 }

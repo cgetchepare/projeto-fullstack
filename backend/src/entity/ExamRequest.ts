@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { MedicalRecord } from "./MedicalRecord"; // Importa a entidade relacionada
+import { MedicalRecord } from "./MedicalRecord"; 
 
 @Entity("exam-requesties")
 export class ExamRequest {
@@ -15,7 +15,6 @@ export class ExamRequest {
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
     updatedAt!: Date;
 
-    // Relacionamento OneToMany com a tabela products
     @OneToMany(() => MedicalRecord, (medicalRecord) => medicalRecord.examRequest)
     medicalRecord!: MedicalRecord[];
 }

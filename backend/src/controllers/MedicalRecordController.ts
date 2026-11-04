@@ -77,12 +77,28 @@ router.put("/medical-records/:id", async (req, res) => {
 
 router.delete("/medical-records/:id", async (req, res) => {
     try {
-        const result = await repository.delete(req.params.id as string);
-        if (!result.affected) return res.status(404).json({ message: "Prontuário não encontrado." });
-        res.json({ message: "Prontuário excluído com sucesso." });
+        const { id } = req.params;
+        const medicalRecordRepository = AppDataSource.getRepository(MedicalRecord);
+        const medicalRecord = await medicalRecordRepository.findOneBy({ id });
+
+        if (!medicalRecord) {
+            res.status(404).json({
+                message: "Prontuário não encontrado!",
+            });
+            return;
+        }
+
+        await medicalRecordRepository.remove(medicalRecord);
+
+        res.status(200).json({
+            message: "Prontuário apagado com sucesso!",
+        });
+        return;
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Erro ao excluir prontuário." });
+        res.status(500).json({
+            message: "Erro ao apagar prontuário!",
+        });
+        return;
     }
 });
 
